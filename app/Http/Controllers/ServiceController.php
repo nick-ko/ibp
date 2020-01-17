@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Service;
+use App\Social;
+use foo\bar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,12 +18,14 @@ class ServiceController extends Controller
     public function index()
     {
         $data['menu']='service';
+        $data['socials']=Social::all();
+        $data['services']=Service::take(6)->orderBy('id','desc')->get();
         return view('frontend.service',$data);
     }
 
     public function service()
     {
-        $service=DB::table('services')->get();
+        $service=Service::orderBy('id','desc')->get();
         return view('backend.service',compact('service'));
     }
 
@@ -92,7 +96,7 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit($id)
     {
         //
     }
@@ -112,12 +116,16 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Service  $service
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy($id)
     {
-        //
+        if (Service::destroy($id)){
+            return redirect()->route('dash.service')->with(['message' => 'Service supprimé avec succes']);
+        }else{
+            return back()->with(['message' => 'Erreur de suppression']);
+        }
     }
 
 }

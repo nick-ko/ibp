@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="37f1bdff-4763-4b70-b4b4-4ea3e487e88f" name="Default Changelist" comment="" />
+    <list default="true" id="37f1bdff-4763-4b70-b4b4-4ea3e487e88f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/partenaire/add.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/partenaire/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/partenaire/liste.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/social/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/social/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/social/liste.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/service.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/service.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/includes/backend-sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/includes/backend-sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/includes/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/includes/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/includes/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/includes/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +33,23 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -108,13 +146,21 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1PgzKd3FLjc97FVE4nho5PCPV8F" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="E:/WorkSpace/DevZone/NaN/Projet/Flutter/backend/ivoire-movies" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -209,7 +255,11 @@
       <workItem from="1572535563283" duration="134000" />
       <workItem from="1578742579900" duration="9635000" />
       <workItem from="1578855434612" duration="9896000" />
-      <workItem from="1579077061310" duration="332000" />
+      <workItem from="1579077061310" duration="1465000" />
+      <workItem from="1579087604894" duration="1706000" />
+      <workItem from="1579193983488" duration="2286000" />
+      <workItem from="1579213085629" duration="2525000" />
+      <workItem from="1579216585564" duration="16188000" />
     </task>
     <servers />
   </component>
@@ -217,21 +267,25 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="275" y="23" key="#Deployment" timestamp="1578745963767">
+    <state x="275" y="23" key="#Deployment" timestamp="1579214860141">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="23" key="#Deployment/0.0.1366.728@0.0.1366.728" timestamp="1578745963767" />
+    <state x="275" y="23" key="#Deployment/0.0.1366.728@0.0.1366.728" timestamp="1579214860141" />
+    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1579246091893">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1579246091893" />
     <state x="344" y="21" width="691" height="685" key="#phpunit.xml" timestamp="1578746377589">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="344" y="21" width="691" height="685" key="#phpunit.xml/0.0.1366.728@0.0.1366.728" timestamp="1578746377589" />
-    <state x="518" y="284" key="NewPhpFileDialog" timestamp="1578864688414">
+    <state x="518" y="284" key="NewPhpFileDialog" timestamp="1579245026241">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="518" y="284" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1578864688414" />
-    <state x="359" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1578855587983">
+    <state x="518" y="284" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1579245026241" />
+    <state x="359" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1579216592846">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="359" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1578855587983" />
+    <state x="359" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1579216592846" />
   </component>
 </project>

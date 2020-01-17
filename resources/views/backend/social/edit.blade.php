@@ -4,15 +4,12 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-          @include('includes.backend-sidebar')
-        <!-- End of Sidebar -->
-
+    @include('includes.backend-sidebar')
+    <!-- End of Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
-
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -73,52 +70,44 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                @include('includes.validator')
-                <!-- Page Heading -->
+
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Services</h1>
-                        <a href="{{route('add.service')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Ajouter un Service</a>
-                    </div>
+                    <h1 class="h3 mb-2 text-gray-800">Reseau social</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Nos Services</h6>
-                        </div>
+
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                    <tr>
-                                        <th>Titre</th>
-                                        <th>Description</th>
-                                        <th>Image</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Titre</th>
-                                        <th>Description</th>
-                                        <th>Image</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </tfoot>
-                                    <tbody>
-                                    @foreach($service as $s)
-                                        <tr>
-                                            <td>{{$s->title}}</td>
-                                            <td>{{$s->contenue}}</td>
-                                            <td><img src="{{URL::to($s->image)}}" alt="" style="width: 100px; height: 70px"></td>
-                                            <td>
-                                                <a href="{{route('service.edit',$s->id)}}"><i class="fa fa-edit btn btn-primary"></i></a>
-                                                <a href="{{route('service.delete',$s->id)}}"><i class="fa fa-trash btn btn-danger"></i></a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
+                                <form class="form-horizontal row-fluid" method="post" action="{{route('social.update')}}" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="control-group">
+                                        <label class="control-label" for="basicinput">Nom</label>
+                                        <div class="controls">
+                                            <input type="text" name="name" id="basicinput" value="{{$social->name}}"   class="form-control">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="control-group">
+                                        <label class="control-label" for="basicinput">Logo</label>
+                                        <div class="controls">
+                                            <input type="text" name="logo" id="basicinput" value="{{$social->logo}}"  class="form-control">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="control-group">
+                                        <label class="control-label" for="basicinput">Lien</label>
+                                        <div class="controls">
+                                            <input type="text" name="link" id="basicinput" value="{{$social->link}}"  class="form-control">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <button type="submit" class="btn btn-primary btn-block">Modifier</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -134,3 +123,5 @@
 
     </div>
 @endsection
+
+

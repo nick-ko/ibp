@@ -9,10 +9,9 @@
                     IBP une holding qui regroupe 7 entreprise.
                 </p>
                 <ul class="socail_icon">
-                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    @foreach($socials as $s)
+                        <li><a href="{{$s->link}}" target="_blank"><i class="{{$s->logo}}" aria-hidden="true"></i></a></li>
+                    @endforeach
                 </ul>
             </div>
             <div class="col-md-4 col-sm-6 footer_about quick">

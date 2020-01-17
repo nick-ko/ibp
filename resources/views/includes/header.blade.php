@@ -10,12 +10,9 @@
             <li><a href="#"><i class="fa fa-clock-o"></i>Lundi - Vendredi 8:00 - 17:00</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right social_nav">
-            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+            @foreach($socials as $s)
+               <li><a href="{{$s->link}}" target="_blank"><i class="{{$s->logo}}" aria-hidden="true"></i></a></li>
+            @endforeach
         </ul>
     </div>
 </section>

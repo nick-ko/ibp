@@ -4,8 +4,8 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-          @include('includes.backend-sidebar')
-        <!-- End of Sidebar -->
+    @include('includes.backend-sidebar')
+    <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -73,47 +73,48 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+
                 @include('includes.validator')
                 <!-- Page Heading -->
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Services</h1>
-                        <a href="{{route('add.service')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Ajouter un Service</a>
+                        <h1 class="h3 mb-0 text-gray-800">Reseau Social</h1>
+                        <a href="{{route('social.create')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Ajouter</a>
                     </div>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Nos Services</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Reseau Social</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>Titre</th>
-                                        <th>Description</th>
-                                        <th>Image</th>
+                                        <th>Nom</th>
+                                        <th>Icon</th>
+                                        <th>Lien</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                        <th>Titre</th>
-                                        <th>Description</th>
-                                        <th>Image</th>
+                                        <th>Nom</th>
+                                        <th>Icon</th>
+                                        <th>Lien</th>
                                         <th>Action</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
-                                    @foreach($service as $s)
+                                    @foreach($socials as $p)
                                         <tr>
-                                            <td>{{$s->title}}</td>
-                                            <td>{{$s->contenue}}</td>
-                                            <td><img src="{{URL::to($s->image)}}" alt="" style="width: 100px; height: 70px"></td>
-                                            <td>
-                                                <a href="{{route('service.edit',$s->id)}}"><i class="fa fa-edit btn btn-primary"></i></a>
-                                                <a href="{{route('service.delete',$s->id)}}"><i class="fa fa-trash btn btn-danger"></i></a>
+                                            <td>{{$p->name}}</td>
+                                            <td><i class="{{$p->logo}}"></i></td>
+                                            <td><a href="{{$p->link}}">{{$p->link}}</a></td>
+                                            <td style="cursor: pointer">
+                                                <a href="{{route("social.edit",$p)}}"><i class="fa fa-edit btn btn-primary"></i></a>
+                                                <a href="{{route("social.delete",$p)}}"><i class="fa fa-trash btn btn-danger"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -134,3 +135,4 @@
 
     </div>
 @endsection
+

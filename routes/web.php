@@ -145,6 +145,28 @@ Route::get('/projet-details/{id}', [
     'as'=>'details.projet'
 ]);
 
+//projet
+Route::get('/dashboard/social', [
+    'uses'=>'SocialController@index',
+    'as'=>'social.liste'
+]);
+Route::get('/dashboard/social/add', [
+    'uses'=>'SocialController@create',
+    'as'=>'social.create'
+]);
+Route::post('/dashboard/social/store', [
+    'uses'=>'SocialController@store',
+    'as'=>'social.store'
+]);
+Route::get('/dashboard/social/edit/{id}', [
+    'uses'=>'SocialController@edit',
+    'as'=>'social.edit'
+]);
+Route::get('/dashboard/social/delete/{id}', [
+    'uses'=>'SocialController@destroy',
+    'as'=>'social.delete'
+]);
+
 //actualite
 Route::get('/actualite', [
     'uses'=>'HomeController@actualite',
@@ -187,6 +209,45 @@ Route::get('/dashboard/add-service', [
 Route::post('/save-service', [
     'uses'=>'ServiceController@store'
 ]);
+Route::get('/dashboard/service/delete/{id}', [
+    'uses'=>'ServiceController@destroy',
+    'as'=>'service.delete'
+]);
+Route::get('/dashboard/service/edit/{id}', [
+    'uses'=>'ServiceController@edit',
+    'as'=>'service.edit'
+]);
+Route::post('/dashboard/service/update', [
+    'uses'=>'ServiceController@update',
+    'as'=>'service.update'
+]);
+
+//partenaire
+Route::get('/dashboard/partenaire', [
+    'uses'=>'PartenaireController@index',
+    'as'=>'partenaire.liste'
+]);
+Route::get('/dashboard/add-partenaire', [
+    'uses'=>'PartenaireController@create',
+    'as'=>'partenaire.add'
+]);
+Route::post('/save-partenaire', [
+    'uses'=>'PartenaireController@store',
+    'as'=>'partenaire.store'
+]);
+Route::get('/dashboard/partenaire/delete/{id}', [
+    'uses'=>'PartenaireController@destroy',
+    'as'=>'partenaire.delete'
+]);
+Route::get('/dashboard/partenaire/edit/{id}', [
+    'uses'=>'PartenaireController@edit',
+    'as'=>'partenaire.edit'
+]);
+Route::post('/dashboard/partenaire/update', [
+    'uses'=>'PartenaireController@update',
+    'as'=>'partenaire.update'
+]);
+
 
 
 Route::get('/carriere', [

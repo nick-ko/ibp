@@ -86,65 +86,24 @@
                 </h4>
             </div>
             <div class="row construction_iner wow zoomIn">
+                @foreach($services as $s)
                 <div class="col-md-4 col-sm-6 construction ">
                     <div class="cns-img">
-                        <img src="{{URL::to('frontend/images/dev.jpg')}}" alt="">
+                        <img src="{{URL::to($s->image)}}" alt="">
                     </div>
                     <div class="cns-content" style="height: 150px">
                         <i class="fa fa-comment" aria-hidden="true"></i>
-                        <a href="{{route('service')}}">CONSEIL EN STRATEGIE,ET MANAGEMENT</a>
+                        <a href="{{route('service')}}">{{$s->title}}</a>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 construction">
-                    <div class="cns-img">
-                        <img src="{{URL::to('frontend/images/dev.jpg')}}" alt="">
-                    </div>
-                    <div class="cns-content" style="height: 150px">
-                        <i class="fa fa-desktop" aria-hidden="true"></i>
-                        <a href="{{route('service')}}">SYSTÈME D'INFORMATION</a>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6 construction">
-                    <div class="cns-img">
-                        <img src="{{URL::to('frontend/images/dev.jpg')}}" alt="" >
-                    </div>
-                    <div class="cns-content" style="height: 150px">
-                        <i class="fa fa-gavel" aria-hidden="true"></i>
-                        <a href="{{route('service')}}">AMÉLIORATION DE LA PERFORMANCE</a>
-
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 construction">
-                    <div class="cns-img">
-                        <img src="{{URL::to('frontend/images/dev.jpg')}}" alt="" >
-                    </div>
-                    <div class="cns-content" style="height: 150px">
-                        <i class="fa fa-check" aria-hidden="true"></i>
-                        <a href="{{route('service')}}">ÉTUDES & PROJETS</a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 construction">
-                    <div class="cns-img">
-                        <img src="{{URL::to('frontend/images/dev.jpg')}}" alt="">
-                    </div>
-                    <div class="cns-content" style="height: 150px">
-                        <i class="fa fa-keyboard-o" aria-hidden="true"></i>
-                        <a href="#">PILOTAGE DE LA TRANSFORMATION</a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 construction">
-                    <div class="cns-img">
-                        <img src="{{URL::to('frontend/images/dev.jpg')}}" alt="">
-                    </div>
-                    <div class="cns-content" style="height: 150px">
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                        <a href="{{route('service')}}">STRATEGIE OPERATIONNELLE</a>
-                    </div>
-                </div>
-                <div style="text-align: center">
-                    <a class="btn btn-primary" href="{{url('/service')}}"> PLUS D'INFO </a>
-                </div>
+                @endforeach
+               <div class="row">
+                   <div class="col-md-12">
+                       <div style="text-align: center">
+                           <a class="btn btn-primary" href="{{url('/service')}}"> PLUS D'INFO </a>
+                       </div>
+                   </div>
+               </div>
             </div>
 
             </div>

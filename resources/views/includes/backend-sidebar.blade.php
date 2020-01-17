@@ -105,7 +105,8 @@
                 <h6 class="collapse-header">Les section du site</h6>
                 <a class="collapse-item" href="{{route('dash.projet')}}">Projets</a>
                 <a class="collapse-item" href="{{route('dash.service')}}">Service</a>
-                <a class="collapse-item" href="">Partenaire</a>
+                <a class="collapse-item" href="{{route('partenaire.liste')}}">Partenaire</a>
+                <a class="collapse-item" href="{{route('social.liste')}}">Reseaux Sociaux</a>
             </div>
         </div>
     </li>
