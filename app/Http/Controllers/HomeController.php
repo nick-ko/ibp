@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Partenaire;
 use App\Projet;
 use App\Service;
 use App\Social;
@@ -23,6 +24,7 @@ class HomeController extends Controller
             ->get();
         $data['services']=Service::take(6)->orderBy('id','desc')->get();
         $data['socials']=Social::all();
+        $data['partenaires']=Partenaire::all();
         $data['projects']=DB::table('projets')
             ->orderByDesc('id')->take(12)->get();
         return view('frontend.home',$data);
@@ -38,6 +40,7 @@ class HomeController extends Controller
     public function about(){
         $data['menu']='a-propos';
         $data['socials']=Social::all();
+        $data['partenaires']=Partenaire::all();
         $data['data']=DB::table('abouts')->first();
         return view('frontend.about',$data);
     }
@@ -52,6 +55,7 @@ class HomeController extends Controller
     public function carriere(){
         $data['menu']='carriere';
         $data['socials']=Social::all();
+        $data['partenaires']=Partenaire::all();
         return view('frontend.carriere',$data);
     }
 

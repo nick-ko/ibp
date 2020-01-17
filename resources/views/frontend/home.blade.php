@@ -175,11 +175,9 @@
                 <h4 style="text-transform: lowercase">Ils nous font confiance</h4>
             </div>
             <div class="partners wow zoomIn" data-wow-delay="1s">
-                <div class="item"><a href="http://www.chapchapci.com/" target="_blank"><img src="{{URL::to('frontend/images/1.jpg')}}" alt="" style="height: 100px"></a></div>
-                <div class="item"><a href="http://www.chapchapci.com/" target="_blank"><img src="{{URL::to('frontend/images/2.png')}}" alt="" style="height: 100px"></a></div>
-                <div class="item"><a href="http://www.chapchapci.com/"><img src="{{URL::to('frontend/images/3.png')}}" alt="" style="height: 100px"></a></div>
-                <div class="item"><a href="http://www.chapchapci.com/"><img src="{{URL::to('frontend/images/3.png')}}" alt="" style="height: 100px"></a></div>
-                <div class="item"><a href="http://www.chapchapci.com/"><img src="{{URL::to('frontend/images/5.png')}}" alt="" style="height: 100px"></a></div>
+                @foreach($partenaires as $p)
+                <div class="item"><a href="{{$p->link}}" target="_blank"><img src="{{URL::to($p->image)}}" alt="" style="height: 100px"></a></div>
+                @endforeach
             </div>
         </div>
     </section>

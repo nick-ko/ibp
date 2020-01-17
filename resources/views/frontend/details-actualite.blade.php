@@ -1,58 +1,6 @@
 @extends('layouts.frontend')
 
 @section('content')
-    <!-- Header_Area -->
-    <nav class="navbar navbar-default header_aera" id="main_navbar">
-        <div class="container">
-
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="col-md-1 p0">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#min_navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="col-md-10 p0">
-                <div class="collapse navbar-collapse" id="min_navbar">
-                    <ul class="nav navbar-nav navbar-center ">
-                        <li >
-                            <a href="{{url('/')}}" >Acceuil</a>
-                        </li>
-                        <li class="header_active underline" >
-                            <a href="{{route('actualite')}}" style="color:blue">Actualité</a>
-                        </li>
-                        <li >
-                            <a href="{{route('about')}}" >A propos</a>
-                        </li>
-                        <li >
-                            <a href="{{route('carriere')}}" >Carriere</a>
-                        </li>
-                        <li><a  href="{{url('/')}}"><img src="{{URL::to('frontend/images/Logo1.png')}}" alt="" style="width: 150px"></a></li>
-                        <li >
-                            <a href="{{route('service')}}">Service</a>
-                        </li>
-                        <li >
-                            <a href="{{route('blog')}}" >Blog</a>
-                        </li>
-                        <li>
-                            <a href="{{route('sondage')}}">Sondage</a>
-                        </li>
-                        <li><a href="{{route('contact')}}">Contact</a></li>
-
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div>
-
-            <div class="col-md-1 p0"></div>
-        </div><!-- /.container -->
-    </nav>
-    <!-- End Header_Area -->
 
     <!-- Banner area -->
     <section class="banner_area" data-stellar-background-ratio="0.5">

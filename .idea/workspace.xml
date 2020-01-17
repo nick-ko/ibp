@@ -3,6 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="37f1bdff-4763-4b70-b4b4-4ea3e487e88f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ActualiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ActualiteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BlogController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SondageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SondageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WebController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/about.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/about.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/carriere.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/carriere.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/details-projet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/details-projet.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,21 +152,21 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="E:/WorkSpace/DevZone/NaN/Projet/Flutter/backend/ivoire-movies" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\ChapChap\WorkSpace\ibp\public\frontend\vendor" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\ChapChap\WorkSpace\ibp" />
       <recent name="E:\ChapChap\WorkSpace\ibp\public\frontend\fonts" />
       <recent name="E:\ChapChap\WorkSpace\ibp\public\frontend\images" />
       <recent name="E:\ChapChap\WorkSpace\ibp\public\frontend\css" />
       <recent name="E:\ChapChap\WorkSpace\ibp\public\backend" />
-      <recent name="E:\ChapChap\WorkSpace\ibp\resources\views\includes" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\ChapChap\WorkSpace\ibp\public\frontend\vendor" />
     </key>
   </component>
   <component name="RunManager">
@@ -240,7 +249,7 @@
       <workItem from="1579087604894" duration="1706000" />
       <workItem from="1579193983488" duration="2286000" />
       <workItem from="1579213085629" duration="2525000" />
-      <workItem from="1579216585564" duration="17400000" />
+      <workItem from="1579216585564" duration="20981000" />
     </task>
     <servers />
   </component>
@@ -252,10 +261,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="23" key="#Deployment/0.0.1366.728@0.0.1366.728" timestamp="1579214860141" />
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1579246091893">
+    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1579264378306">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1579246091893" />
+    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1579264378306" />
     <state x="344" y="21" width="691" height="685" key="#phpunit.xml" timestamp="1578746377589">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

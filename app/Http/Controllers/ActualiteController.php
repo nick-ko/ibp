@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actualite;
+use App\Social;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -71,19 +72,21 @@ class ActualiteController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Actualite  $actualite
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function show($id)
     {
 
-        $actualite=DB::table('actualites')
+        $data['actualite']=DB::table('actualites')
             ->where('id',$id)
             ->first();
-        $others=DB::table('actualites')
+        $data['socials']=Social::all();
+        $data['others']=DB::table('actualites')
             ->where('id','!=',$id)
             ->get();
+        $data['menu']="actualite";
 
-        return view('frontend.details-actualite',compact('actualite','others'));
+        return view('frontend.details-actualite',$data);
     }
 
     /**

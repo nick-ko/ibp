@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use App\Comment;
+use App\Social;
 use DOMDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,6 +25,7 @@ class BlogController extends Controller
     public function blog()
     {
         $data['menu']='blog';
+        $data['socials']=Social::all();
         $data['articles']=DB::table('blogs')->get();
         return view('frontend.blog',$data);
     }

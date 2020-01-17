@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Projet;
 use App\Slider;
+use App\Social;
 use DOMDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
@@ -84,13 +85,15 @@ class WebController extends Controller
     }
 
     public function details_projet($id){
-        $projects=DB::table('projets')
+        $data['projects']=DB::table('projets')
             ->where('id',$id)
             ->first();
-        $others=DB::table('projets')
+        $data['others']=DB::table('projets')
             ->where('id','!=',$id)
             ->get();
-        return view('frontend.details-projet',compact('projects','others'));
+        $data['socials']=Social::all();
+        $data['menu']="projet";
+        return view('frontend.details-projet',$data);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Participants;
+use App\Social;
 use App\Sondage;
 use ConsoleTVs\Charts\Facades\Charts;
 use Illuminate\Http\Request;
@@ -53,8 +54,10 @@ class SondageController extends Controller
     }
     public function sondage(){
 
-        $questions=DB::table('sondages')->get();
-        return view('frontend.sondage',compact('questions'));
+        $data['questions']=DB::table('sondages')->get();
+        $data['socials']=Social::all();
+        $data['menu']="sondage";
+        return view('frontend.sondage',$data);
     }
 
     public function do_sondage(Request $request){
