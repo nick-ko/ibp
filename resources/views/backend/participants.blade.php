@@ -110,7 +110,9 @@
                                             <td>{{$p->email}}</td>
                                             <td>{{$question->question}}</td>
                                             <td>{{$p->answer}}</td>
-                                            <td><i class="fa fa-edit btn btn-primary"></i>      <i class="fa fa-trash btn btn-danger"></i></td>
+                                            <td>
+                                                <a href="{{route('delete.participant',$p->id)}}"><i class="fa fa-trash btn btn-danger"></i></a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

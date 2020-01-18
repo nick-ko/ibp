@@ -73,50 +73,51 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                @include('includes.validator')
-                <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Partenaires</h1>
-                        <a href="{{route('partenaire.add')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Ajouter un Partenaire</a>
-                    </div>
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Offre d'emploi</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Partenaires</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Modifier une offre</h6>
                         </div>
+                        @include('includes.validator')
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                    <tr>
-                                        <th>Lien</th>
-                                        <th>Image</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Description</th>
-                                        <th>Image</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </tfoot>
-                                    <tbody>
-                                    @foreach($partenaires as $p)
-                                        <tr>
-                                            <td>{{$p->link}}</td>
-                                            <td><img src="{{URL::to($p->image)}}" alt="" style="width: 100px; height: 70px"></td>
-                                            <td>
-                                                <a href="{{route('partenaire.edit',$p->id)}}"><i class="fa fa-edit btn btn-primary"></i></a>
-                                                <a href="{{route('partenaire.delete',$p->id)}}">
-                                                    <i class="fa fa-trash btn btn-danger"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
+                                <form class="form-horizontal row-fluid" method="post" action="{{route('update.offre')}}" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="control-group">
+                                        <label class="control-label" for="basicinput">Poste</label>
+                                        <div class="controls">
+                                            <input type="hidden" name="id" value="{{$offre->id}}">
+                                            <input type="text" name="poste" id="basicinput" value="{{$offre->poste}}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="basicinput">Type d'offre</label>
+                                        <div class="controls">
+                                            <select type="text" name="type" id="basicinput"  class="form-control">
+                                                <option value=" ">Selectionez le type de l'offre</option>
+                                                <option value="stage" {{($offre->type == 'stage')?'selected':''}}>Stage</option>
+                                                <option value="CDD" {{($offre->type == 'CDD')?'selected':''}}>CDD</option>
+                                                <option value="CDI" {{($offre->type == 'CDI')?'selected':''}}>CDI</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="basicinput">Description du poste</label>
+                                        <div class="controls">
+                                            <textarea class="form-control" name="description" rows="7" >{{$offre->description}}</textarea>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <button type="submit" class="btn btn-primary btn-block">Modifier</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -132,4 +133,5 @@
 
     </div>
 @endsection
+
 

@@ -96,6 +96,40 @@ class WebController extends Controller
         return view('frontend.details-projet',$data);
     }
 
+    public function editSlider($id){
+       $data['slider']=Slider::find($id);
+       return view('backend.edit-slider',$data);
+    }
+
+    public function updateSlider(Request $request){
+        $this->validate($request, [
+            'description' => 'required'
+        ]);
+
+        $description = $request['description'];
+
+        $slider= Slider::find($request->id);
+        $slider->description=$description;
+
+        $image = $request->file('image');
+
+        if ($image)
+        {
+            $filename = $image->getClientOriginalName();
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $filename ;
+            $upload_path = 'images/sliders/';
+            $slider_image = $upload_path . $image_full_name;
+            $success = $image->move($upload_path, $image_full_name);
+
+            if ($success) {
+                $slider->image=$slider_image;
+            }
+        }
+        $slider->update();
+        return redirect()->route('sliders')->with(['message' => 'Slider modifié avec succes']);
+    }
+
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
@@ -170,7 +204,76 @@ class WebController extends Controller
         return view('backend.participants',compact('participants'));
     }
 
+    public function editProjet($id){
+        $this->AdminAuthCheck();
+        $data['projet']=Projet::findorFail($id);
+        return view('backend.edit-projet',$data);
+    }
 
+    public function deleteProjet($id){
+        if (Projet::destroy($id)){
+            return redirect()->route('dash.projet')->with(['message' => 'projet supprimé avec succes']);
+        }else{
+            return back()->with(['danger' => 'Erreur dans la suppression']);
+        }
+    }
+
+    public function updateProjet(Request $request){
+        $this->validate($request, [
+            'title' => 'required',
+            'category' => 'required',
+        ]);
+
+        $title = $request['title'];
+        $category = $request['category'];
+        $content = $request->contenu;
+
+        $dom = new domdocument();
+        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $images = $dom->getElementsByTagName('img');
+
+        //loop over img elements, decode their base64 src and save them to public folder,
+        //and then replace base64 src with stored image URL.
+        foreach($images as $k => $img){
+            $data = $img->getAttribute('src');
+
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+
+            $data = base64_decode($data);
+            $image_name= time().$k.'.png';
+            $path = public_path() .'/'. $image_name;
+
+            file_put_contents($path, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+
+
+        $content = $dom->saveHTML();
+
+        $projet= Projet::find($request['id']);
+        $projet->title=$title;
+        $projet->categorie=$category;
+        $projet->content=$content;
+        $image = $request->file('image');
+        if ($image)
+        {
+            $filename = $image->getClientOriginalName();
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $filename ;
+            $upload_path = 'images/projets/';
+            $slider_image = $upload_path . $image_full_name;
+            $success = $image->move($upload_path, $image_full_name);
+
+            if ($success) {
+                $projet->image=$slider_image;
+            }
+        }
+        $projet->update();
+        return redirect()->route('dash.projet')->with(['message' => 'Projet Modifié avec succes']);
+    }
 
     public function AdminAuthCheck(){
         $admin_id=Session::get('admin_id');

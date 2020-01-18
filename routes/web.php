@@ -41,6 +41,16 @@ Route::post('/save-slider', [
     'as'=>'save.slider'
 ]);
 
+Route::get('/dashboard/edit-slider/{id}', [
+    'uses'=>'WebController@editSlider',
+    'as'=>'edit.slider'
+]);
+
+Route::post('/dashboard/update-slider', [
+    'uses'=>'WebController@updateSlider',
+    'as'=>'update.slider'
+]);
+
 Route::get('/dashboard', [
     'uses'=>'AdminController@dash',
     'as'=>'dash'
@@ -100,8 +110,23 @@ Route::get('/blog/article/{id}', [
     'uses'=>'BlogController@show',
     'as'=>'article'
 ]);
+
 Route::get('/dashboard/delete-article/{id}', [
     'uses'=>'BlogController@delete'
+]);
+
+Route::get('/dashboard/edit-article/{id}', [
+    'uses'=>'BlogController@edit',
+    'as'=>'edit.article'
+]);
+Route::get('/dashboard/publish-article/{id}', [
+    'uses'=>'BlogController@publishArticle',
+    'as'=>'publish.article'
+]);
+
+Route::post('/dashboard/update-article', [
+    'uses'=>'BlogController@update',
+    'as'=>'update.article'
 ]);
 
 //sondage
@@ -112,6 +137,22 @@ Route::get('/dashboard/sondage', [
 Route::get('/dashboard/add-sondage', [
     'uses'=>'SondageController@create',
     'as'=>'add.sondage'
+]);
+Route::get('/dashboard/delete-sondage/{id}', [
+    'uses'=>'SondageController@destroy',
+    'as'=>'delete.sondage'
+]);
+Route::get('/dashboard/delete-participant/{id}', [
+    'uses'=>'SondageController@deleteParticipant',
+    'as'=>'delete.participant'
+]);
+Route::post('/dashboard/update-sondage', [
+    'uses'=>'SondageController@update',
+    'as'=>'update.sondage'
+]);
+Route::get('/dashboard/edit-sondage/{id}', [
+    'uses'=>'SondageController@edit',
+    'as'=>'edit.sondage'
 ]);
 Route::post('/store-sondage', [
     'uses'=>'SondageController@store'
@@ -144,8 +185,20 @@ Route::get('/projet-details/{id}', [
     'uses'=>'WebController@details_projet',
     'as'=>'details.projet'
 ]);
+Route::get('dashboard/delete/{id}', [
+    'uses'=>'WebController@deleteProjet',
+    'as'=>'delete.projet'
+]);
+Route::post('/projet/update', [
+    'uses'=>'WebController@updateProjet',
+    'as'=>'update.projet'
+]);
+Route::get('/projet/edit/{id}', [
+    'uses'=>'WebController@editProjet',
+    'as'=>'edit.projet'
+]);
 
-//projet
+//social
 Route::get('/dashboard/social', [
     'uses'=>'SocialController@index',
     'as'=>'social.liste'
@@ -157,6 +210,10 @@ Route::get('/dashboard/social/add', [
 Route::post('/dashboard/social/store', [
     'uses'=>'SocialController@store',
     'as'=>'social.store'
+]);
+Route::post('/dashboard/social/update', [
+    'uses'=>'SocialController@update',
+    'as'=>'social.update'
 ]);
 Route::get('/dashboard/social/edit/{id}', [
     'uses'=>'SocialController@edit',
@@ -182,6 +239,18 @@ Route::get('/dashboard/actualite', [
 Route::get('/dashboard/add-actualite', [
     'uses'=>'ActualiteController@create',
     'as'=>'add.actualite'
+]);
+Route::get('/dashboard/delete-actualite/{id}', [
+    'uses'=>'ActualiteController@destroy',
+    'as'=>'delete.actualite'
+]);
+Route::get('/dashboard/edit-actualite/{id}', [
+    'uses'=>'ActualiteController@edit',
+    'as'=>'edit.actualite'
+]);
+Route::post('/dashboard/update-actualite', [
+    'uses'=>'ActualiteController@update',
+    'as'=>'update.actualite'
 ]);
 Route::post('/store-actualite', [
     'uses'=>'ActualiteController@store'
@@ -269,8 +338,20 @@ Route::get('/dashboard/add-offre', [
     'uses'=>'OffreController@create',
     'as'=>'add.offre'
 ]);
+Route::get('/dashboard/edit-offre/{id}', [
+    'uses'=>'OffreController@edit',
+    'as'=>'edit.offre'
+]);
+Route::post('/dashboard/update-offre', [
+    'uses'=>'OffreController@update',
+    'as'=>'update.offre'
+]);
 Route::get('/dashboard/delete-offre/{id}', [
     'uses'=>'OffreController@destroy'
+]);
+Route::get('/dashboard/delete-postulant/{id}', [
+    'uses'=>'OffreController@deletePostulant',
+    'as'=>'delete.postulant'
 ]);
 Route::post('/save-offre', [
     'uses'=>'OffreController@store'

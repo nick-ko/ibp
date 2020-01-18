@@ -81,7 +81,7 @@ class SocialController extends Controller
      */
     public function edit($id)
     {
-        $data['social']=Social::findOrFail($id);
+        $data['social']=Social::find($id);
         return view('backend.social.edit',$data);
     }
 
@@ -94,7 +94,26 @@ class SocialController extends Controller
      */
     public function update(Request $request, Social $social)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'link' => 'required',
+            'logo' => 'required'
+        ]);
+
+        $name = $request['name'];
+        $logo = $request['logo'];
+        $link = $request['link'];
+
+        $social= Social::find($request['id']);
+        $social->name=$name;
+        $social->logo=$logo;
+        $social->link=$link;
+
+        if ($social->update()){
+            return redirect()->route('social.liste')->with(['message' => 'reseau social modifié avec succes']);
+        }else{
+            return back()->with(['danger' => 'Erreur dans le formulaire']);
+        }
     }
 
     /**

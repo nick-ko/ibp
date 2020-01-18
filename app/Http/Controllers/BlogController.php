@@ -14,19 +14,19 @@ class BlogController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $articles=DB::table('blogs')->where('status','=',1)->get();
-        return view('backend.blog',compact('articles'));
+        $data['articles']=Blog::all();
+        return view('backend.blog',$data);
     }
 
     public function blog()
     {
         $data['menu']='blog';
         $data['socials']=Social::all();
-        $data['articles']=DB::table('blogs')->get();
+        $data['articles']=Blog::whereStatus(0)->get();
         return view('frontend.blog',$data);
     }
 
@@ -105,59 +105,132 @@ class BlogController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Blog  $blog
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function show($id)
     {
-        $article=DB::table('blogs')
+        $data['article']=DB::table('blogs')
             ->where('id',$id)
             ->first();
-        $comments=DB::table('comments')
+        $data['comments']=DB::table('comments')
             ->where('articleId',$id)
             ->get();
-        $others=DB::table('blogs')
+        $data['others']=DB::table('blogs')
             ->where('id','!=',$id)
             ->get();
-        return view('frontend.article',compact('article','comments','others'));
+        $data['socials']=Social::all();
+        $data['menu']="blog";
+        return view('frontend.article',$data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Blog  $blog
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function edit(Blog $blog)
+    public function edit($id)
     {
-        //
+        $data['article']=Blog::find($id);
+        return view('backend.edit-article',$data);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Blog  $blog
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'contenu' => 'required'
+        ]);
+
+        $content=$request->contenu;
+        $title=$request->title;
+        $description=$request->description;
+
+        $dom = new domdocument();
+        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $images = $dom->getElementsByTagName('img');
+
+        //loop over img elements, decode their base64 src and save them to public folder,
+        //and then replace base64 src with stored image URL.
+        foreach($images as $k => $img){
+            $data = $img->getAttribute('src');
+
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+
+            $data = base64_decode($data);
+            $image_name= time().$k.'.png';
+            $path = public_path() .'/'. $image_name;
+
+            file_put_contents($path, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+
+        $content = $dom->saveHTML();
+        $blog = Blog::find($request->id);
+        $blog->title = $title;
+        $blog->description = $description;
+        $blog->content = $content;
+        $image = $request->file('image');
+
+        if ($image)
+        {
+            $filename = $image->getClientOriginalName();
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $filename ;
+            $upload_path = 'images/blog/';
+            $slider_image = $upload_path . $image_full_name;
+            $success = $image->move($upload_path, $image_full_name);
+
+            if ($success) {
+                $blog->image=$slider_image;
+            }
+        }
+        $blog->update();
+
+        return redirect()->route('dash.blog')->with(['message' => 'Article modifié avec succes']);
+    }
+
+    public function publishArticle($id){
+        $article=Blog::find($id);
+        if ($article->status==0){
+            $article->update([
+                'status'=> 1
+            ]);
+            return redirect()->route('dash.blog')->with(['message' => 'Article non publié']);
+        }else{
+            $article->update([
+                'status'=> 0
+            ]);
+            return redirect()->route('dash.blog')->with(['message' => 'Article publié']);
+        }
+
     }
 
     public function delete($id)
     {
-        DB::table('blogs')
-            ->where('id', $id)
-            ->delete();
-
-        return redirect()->route('dash.blog')->with(['message' => 'article supprimé avec succes']);
+        if (Blog::destroy($id)){
+            return redirect()->route('dash.blog')->with(['message' => 'article supprimé avec succes']);
+        }else{
+            return back()->with(['danger' => 'erreur de suppression']);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Blog  $blog
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function comment(Request $request)
     {

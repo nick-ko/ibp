@@ -111,15 +111,14 @@
                                             <td>{{$article->description}}</td>
                                             <td><img src="{{URL::to($article->image)}}" alt="" style="width: 100px; height: 70px"></td>
                                             <td>
-                                                @if(($article->status)==0)
-                                                    <i class="fa fa-thumbs-o-down btn btn-danger"></i>
+                                                @if(($article->status)==1)
+                                                    <a href="{{route('publish.article',$article->id)}}"><i class="fa fa-thumbs-o-down btn btn-danger"></i></a>
                                                 @else
-                                                    <i class="fa fa-thumbs-o-up btn btn-primary"></i>
+                                                    <a href="{{route('publish.article',$article->id)}}"><i class="fa fa-thumbs-o-up btn btn-primary"></i></a>
                                                 @endif
                                             </td>
                                             <td style="cursor: pointer">
-                                                <i class="fa fa-eye btn btn-success"></i>
-                                                <i class="fa fa-edit btn btn-primary"></i>
+                                                <a href="{{URL::to('/dashboard/edit-article/'.$article->id)}}"><i class="fa fa-edit btn btn-primary"></i></a>
                                                 <a href="{{URL::to('/dashboard/delete-article/'.$article->id)}}"><i class="fa fa-trash btn btn-danger"></i></a>
                                             </td>
                                         </tr>

@@ -95,9 +95,10 @@ class ActualiteController extends Controller
      * @param  \App\Actualite  $actualite
      * @return \Illuminate\Http\Response
      */
-    public function edit(Actualite $actualite)
+    public function edit($id)
     {
-        //
+        $data['actualite'] = Actualite::find($id);
+        return view('backend.edit-actualite',$data);
     }
 
     /**
@@ -109,7 +110,29 @@ class ActualiteController extends Controller
      */
     public function update(Request $request, Actualite $actualite)
     {
-        //
+        $title=$request->title;
+        $description=$request->description;
+
+        $actualite = Actualite::find($request->id);
+        $actualite->title = $title;
+        $actualite->description = $description;
+        $image = $request->file('image');
+
+        if ($image)
+        {
+            $filename = $image->getClientOriginalName();
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $filename ;
+            $upload_path = 'images/actualite/';
+            $slider_image = $upload_path . $image_full_name;
+            $success = $image->move($upload_path, $image_full_name);
+
+            if ($success) {
+                $actualite->image=$slider_image;
+            }
+        }
+        $actualite->update();
+        return redirect()->route('dash.actualite')->with(['message' => 'Actualité modifiée avec succes']);
     }
 
     /**
@@ -118,9 +141,13 @@ class ActualiteController extends Controller
      * @param  \App\Actualite  $actualite
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Actualite $actualite)
+    public function destroy($id)
     {
-        //
+        if (Actualite::destroy($id)){
+            return redirect()->route('dash.actualite')->with(['message' => 'Actualité supprimé avec succes']);
+        }else{
+            return back()->with(['danger' => 'Erreur dans la suppression']);
+        }
     }
     public function AdminAuthCheck(){
         $admin_id=Session::get('admin_id');

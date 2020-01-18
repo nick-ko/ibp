@@ -97,9 +97,9 @@
                                         <select name="category" id="" class="form-control">
                                             <option value="">SELECTIONNEZ LA CATEGORIE</option>
                                             <option value="informatique"> SYSTEME D'INFORMATION </option>
-                                            <option value="projet"> PROJET & ETUDE  </option>
-                                            <option value="strategie"> STRATEGIE ET MANAGEMENT  </option>
-                                            <option value="amelioration">AMELIORATION PERFORMANCE </option>
+                                            <option value="projet et etude"> PROJET & ETUDE  </option>
+                                            <option value="strategie et management"> STRATEGIE ET MANAGEMENT  </option>
+                                            <option value="amelioration performance">AMELIORATION PERFORMANCE </option>
                                             <option value="tourisme">TOURISME</option>
                                         </select>
                                     </div>

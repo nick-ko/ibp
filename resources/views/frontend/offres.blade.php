@@ -23,7 +23,7 @@
                 @foreach($offres as $offre)
                     <div class="col-md-4 col-sm-6 construction wow zoomIn">
                         <div class="cns-content">
-                            <i class="fa fa-question" aria-hidden="true"></i>
+                            <i class="fa fa-drivers-license" aria-hidden="true"></i>
                             <a>{{$offre->poste}} <br> - <br>
                                 {{$offre->type}}
                             </a>

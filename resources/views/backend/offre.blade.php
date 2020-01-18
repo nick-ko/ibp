@@ -115,7 +115,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <i class="fa fa-edit btn btn-primary"></i>
+                                                <a href="{{route('edit.offre',$offre->id)}}"><i class="fa fa-edit btn btn-primary"></i></a>
                                                 <a href="{{URL::to('/dashboard/delete-offre/'.$offre->id)}}"><i class="fa fa-trash btn btn-danger"></i></a>
                                             </td>
                                         </tr>

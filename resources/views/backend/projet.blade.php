@@ -112,7 +112,10 @@
                                             <td>{{$p->title}}</td>
                                             <td>{{$p->categorie}}</td>
                                             <td><img src="{{URL::to($p->image)}}" alt="" style="width: 100px; height: 70px"></td>
-                                            <td style="cursor: pointer"><i class="fa fa-eye btn btn-success"></i>   <i class="fa fa-edit btn btn-primary"></i>     <i class="fa fa-trash btn btn-danger"></i></td>
+                                            <td style="cursor: pointer">
+                                                <a href="{{route('edit.projet',$p->id)}}"><i class="fa fa-edit btn btn-primary"></i> </a>
+                                                <a href="{{route('delete.projet',$p->id)}}"><i class="fa fa-trash btn btn-danger"></i></a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

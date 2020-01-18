@@ -75,36 +75,56 @@ class OffreController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\offre  $offre
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function edit(offre $offre)
+    public function edit($id)
     {
-        //
+        $data['offre']=offre::find($id);
+        return view('backend.edit-offre',$data);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\offre  $offre
+     * @param \Illuminate\Http\Request $request
+     * @param \App\offre $offre
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, offre $offre)
     {
-        //
+        $this->validate($request, [
+            'poste' => 'required',
+            'description' => 'required',
+            'type' => 'required'
+        ]);
+
+        $poste = $request['poste'];
+        $type = $request['type'];
+        $description = $request['description'];
+
+        $offre = offre::find($request['id']);
+        $offre->poste=$poste;
+        $offre->type=$type;
+        $offre->description=$description;
+        $offre->update();
+
+        return redirect()->route('dash.offre')->with(['message' => 'Offre modifié avec succes']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\offre  $offre
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function destroy($id)
     {
         DB::table('offres')
             ->where('id', $id)
             ->delete();
+        cv::where('offre',$id)->delete();
+
         return redirect()->route('dash.offre')->with(['message' => 'Offre supprimé avec succes']);
     }
 
@@ -145,6 +165,14 @@ class OffreController extends Controller
                 $cv->save();
             }
         }
-        return redirect()->route('offre')->with(['message' => 'Notre Cv a été envoyer avec succes']);
+        return redirect()->route('offre')->with(['message' => 'Votre Cv a été envoyé avec succes']);
+    }
+
+    public function deletePostulant($id){
+        if (cv::destroy($id)){
+            return redirect()->route('cv')->with(['message' => 'Postulant supprimé avec succes']);
+        }else{
+            return back()->with(['danger' => 'Erreur dans la suppression']);
+        }
     }
 }

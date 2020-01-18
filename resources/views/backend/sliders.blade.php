@@ -105,7 +105,7 @@
                                             <td>{{$slider->description}}</td>
                                             <td><img src="{{URL::to($slider->image)}}" alt="" style="width: 100px; height: 70px"></td>
                                             <td>
-                                                <i class="fa fa-edit btn btn-primary"></i>
+                                                <a href="{{route('edit.slider',$slider->id)}}"><i class="fa fa-edit btn btn-primary"></i></a>
                                                 <a href="{{URL::to('/dashboard/delete-slider/'.$slider->id)}}">
                                                     <i class="fa fa-trash btn btn-danger"></i>
                                                 </a>

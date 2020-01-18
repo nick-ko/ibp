@@ -4,8 +4,8 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-           @include('includes.backend-sidebar')
-        <!-- End of Sidebar -->
+    @include('includes.backend-sidebar')
+    <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -113,7 +113,10 @@
                                             <td>{{$actualite->description}}</td>
                                             <td><img src="{{URL::to($actualite->image)}}" alt="" style="width: 100px; height: 70px"></td>
 
-                                            <td style="cursor: pointer"><i class="fa fa-edit btn btn-primary"></i><i class="fa fa-trash btn btn-danger"></i></td>
+                                            <td style="cursor: pointer">
+                                                <a href="{{route('edit.actualite',$actualite->id)}}"><i class="fa fa-edit btn btn-primary"></i></a>
+                                                <a href="{{route('delete.actualite',$actualite->id)}}"><i class="fa fa-trash btn btn-danger"></i></a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -133,4 +136,5 @@
 
     </div>
 @endsection
+
 

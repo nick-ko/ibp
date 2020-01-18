@@ -84,6 +84,7 @@
                                     <div class="control-group">
                                         <label class="control-label" for="basicinput">Nom</label>
                                         <div class="controls">
+                                            <input type="hidden" name="id" value="{{$social->id}}">
                                             <input type="text" name="name" id="basicinput" value="{{$social->name}}"   class="form-control">
                                         </div>
                                     </div>

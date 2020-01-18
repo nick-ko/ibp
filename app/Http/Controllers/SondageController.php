@@ -8,6 +8,7 @@ use App\Sondage;
 use ConsoleTVs\Charts\Facades\Charts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class SondageController extends Controller
 {
@@ -120,9 +121,14 @@ class SondageController extends Controller
             ->dimensions(1000,500)
             ->responsive(false);
 
+        $socials=Social::all();
+        $menu='sondage';
+
         return view('frontend.result')
             ->with('question',$question)
             ->with('chart',$chart)
+            ->with('menu',$menu)
+            ->with('socials',$socials)
             ->with(['message' => "Merci d'avoir participer a notre sondage"]);
     }
 
@@ -141,33 +147,61 @@ class SondageController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Sondage  $sondage
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function edit(Sondage $sondage)
+    public function edit($id)
     {
-        //
+        $data['sondage'] = Sondage::find($id);
+        return view('backend.edit-sondage',$data);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Sondage  $sondage
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Sondage $sondage
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, Sondage $sondage)
     {
-        //
+        $this->validate($request, [
+            'question' => 'required'
+        ]);
+
+        $question = $request['question'];
+        $sondage= Sondage::find($request['id']);
+        $sondage->question=$question;
+        $sondage->update();
+        return redirect()->route('dash.sondage')->with(['message' => 'Sondage modifié avec succes']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Sondage  $sondage
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function result()
     {
-        return view('frontend.result');
+        $data['socials']=Social::all();
+        return view('frontend.result',$data);
+    }
+
+    public function destroy($id){
+        if (Sondage::destroy($id)){
+             Participants::where('question',$id)->delete();
+            return redirect()->route('dash.sondage')->with(['message' => 'Sondage supprimé avec succes']);
+        }else{
+            return back()->with(['danger' => 'Erreur dans la suppression']);
+        }
+    }
+
+    public function deleteParticipant($id){
+        if (Participants::destroy($id)){
+            return redirect()->route('participants')->with(['message' => 'Participant supprimé avec succes']);
+        }else{
+            return back()->with(['danger' => 'Erreur dans la suppression']);
+        }
     }
 }

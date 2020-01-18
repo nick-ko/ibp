@@ -80,11 +80,12 @@ class PartenaireController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Partenaire  $partenaire
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function edit(Partenaire $partenaire)
+    public function edit($id)
     {
-        //
+        $data['partenaire'] = Partenaire::find($id);
+        return view('backend.partenaire.edit',$data);
     }
 
     /**
@@ -92,21 +93,50 @@ class PartenaireController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Partenaire  $partenaire
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function update(Request $request, Partenaire $partenaire)
     {
-        //
+        $this->validate($request, [
+            'link' => 'required'
+        ]);
+
+        $link = $request['link'];
+
+        $partenaire= Partenaire::find($request['id']);
+        $partenaire->link = $link;
+
+        $image = $request->file('image');
+
+        if ($image)
+        {
+            $filename = $image->getClientOriginalName();
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $filename ;
+            $upload_path = 'images/partenaire/';
+            $slider_image = $upload_path . $image_full_name;
+            $success = $image->move($upload_path, $image_full_name);
+
+            if ($success) {
+                $partenaire->image=$slider_image;
+            }
+        }
+        $partenaire->update();
+        return redirect()->route('partenaire.liste')->with(['message' => 'partenaire modifié avec succes']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Partenaire  $partenaire
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    public function destroy(Partenaire $partenaire)
+    public function destroy($id)
     {
-        //
+        if (Partenaire::destroy($id)){
+            return redirect()->route('partenaire.liste')->with(['message' => 'reseau social supprimé avec succes']);
+        }else{
+            return back()->with(['danger' => 'Erreur dans la suppression']);
+        }
     }
 }

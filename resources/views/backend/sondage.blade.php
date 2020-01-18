@@ -108,7 +108,10 @@
                                             <td>{{$q->question}}</td>
                                             <td>{{$q->pour}}</td>
                                             <td>{{$q->contre}}</td>
-                                            <td><i class="fa fa-edit btn btn-primary"></i>      <i class="fa fa-trash btn btn-danger"></i></td>
+                                            <td>
+                                                <a href="{{route('edit.sondage',$q->id)}}"><i class="fa fa-edit btn btn-primary"></i> </a>
+                                                <a href="{{route('delete.sondage',$q->id)}}"><i class="fa fa-trash btn btn-danger"></i></a>
+                                            </td>
                                         </tr>
                                      @endforeach
                                     </tbody>

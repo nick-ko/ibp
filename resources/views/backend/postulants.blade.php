@@ -75,12 +75,12 @@
                 <div class="container-fluid">
                 @include('includes.validator')
                 <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Participants au sondage</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Offre d'emploi</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Participants</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Postulants</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -113,7 +113,9 @@
                                             <td>{{$offre->poste}} - {{$offre->type}}</td>
                                             <td>{{$cv->created_at}}</td>
                                             <td><a href="{{url($cv->cv)}}"><i class="fa fa-eye btn btn-success"></i></a></td>
-                                            <td><i class="fa fa-edit btn btn-primary"></i>      <i class="fa fa-trash btn btn-danger"></i></td>
+                                            <td>
+                                                <a href="{{route('delete.postulant',$cv->id)}}"><i class="fa fa-trash btn btn-danger"></i></a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

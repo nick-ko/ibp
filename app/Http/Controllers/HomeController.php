@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Blog;
 use App\Partenaire;
 use App\Projet;
 use App\Service;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Session;
 class HomeController extends Controller
 {
     public function home(){
+
         $data['menu']='acceuil';
         $data['articles']=DB::table('blogs')
             ->where('status','=',1)
@@ -24,6 +26,7 @@ class HomeController extends Controller
             ->get();
         $data['services']=Service::take(6)->orderBy('id','desc')->get();
         $data['socials']=Social::all();
+        $data['articles'] = Blog::whereStatus(0)->take(4)->orderBy('id','desc')->get();
         $data['partenaires']=Partenaire::all();
         $data['projects']=DB::table('projets')
             ->orderByDesc('id')->take(12)->get();

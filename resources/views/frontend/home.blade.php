@@ -159,7 +159,7 @@
                 <div class="col-md-4 col-sm-6 blog_content">
                     <img src="{{URL::to($article->image)}}" alt="">
                     <a href="{{URL::to('/blog/article/'.$article->id)}}" class="blog_heading">{{$article->title}}</a>
-                    <h4><i class="fa fa-bookmark"></i>   categorie <i class="fa fa-calendar"></i>  {{$article->created_at}}</h4>
+                    <h4><i class="fa fa-user"></i> IBP   &nbsp;&nbsp;<i class="fa fa-calendar"></i> {{$article->created_at}}</h4>
                 </div>
                 @endforeach
             </div>
